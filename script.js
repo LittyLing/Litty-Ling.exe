@@ -34,6 +34,7 @@ var renderDot = false;
 function tick() {
 	render();
 
+	// animate logo
 	if (circleLen > circleEndAngle - circleInitAngle - step) {
 		circleLen += step;
 	} else {
@@ -75,8 +76,8 @@ function render() {
 
 window.onload = function() {
 	render();
-}
 
-window.onclick = function() {
-	tick();
+	setTimeout(function() {
+		tick();
+	}, 1000);
 }
