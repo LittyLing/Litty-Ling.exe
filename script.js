@@ -8,7 +8,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth * 0.5;
+canvas.width = window.innerWidth * 0.4;
 canvas.height = canvas.width
 
 // basic variables
@@ -26,9 +26,12 @@ var circleRadius = canvas.width/3.265;
 var circleInitAngle = 5.18;
 var circleEndAngle = -0.765;
 var circleLen = 0;
-var step = -0.1;
+var step = 0;
+var stepAccel = -0.007;
 
 var renderDot = false;
+var dotAlpha = 0;
+var dotStep = 0.2;
 
 // update function
 function tick() {
@@ -37,12 +40,18 @@ function tick() {
 	// animate logo
 	if (circleLen > circleEndAngle - circleInitAngle - step) {
 		circleLen += step;
+
+		if (circleLen > (circleEndAngle - circleInitAngle - step)/2) {
+			step += stepAccel
+		} else {
+			step -= stepAccel/2;
+		}
 	} else {
 		circleLen = circleEndAngle - circleInitAngle;
 
 		setTimeout(function() {
 			renderDot = true;
-		}, 100);
+		}, 200);
 	}
 
 	setTimeout(function() {
@@ -66,12 +75,28 @@ function render() {
 	ctx.arc(canvas.width/2, canvas.height/2, circleRadius, circleInitAngle, circleInitAngle + circleLen, true);
 	ctx.stroke();
 
+	ctx.save();
+
 	if (renderDot) {
+		ctx.globalAlpha = dotAlpha;
+
+		if (dotAlpha < 1) {
+			dotAlpha += dotStep;
+		} else {
+			dotAlpha = 1;
+		}
+
 		ctx.fillStyle = circleColor;
 		ctx.beginPath();
 		ctx.arc(canvas.width/2 + canvas.width/5.479, canvas.height/2 - canvas.width/4.061, canvas.width/34.783, 0, Math.PI * 2, true);
 		ctx.fill();
+
+		ctx.font = canvas.height/10 + "px calibri";
+		ctx.textAlign = "center";
+		ctx.fillText("Litty Ling Productions", canvas.width/2, canvas.height - canvas.height/15);
 	}
+
+	ctx.restore();
 }
 
 window.onload = function() {
