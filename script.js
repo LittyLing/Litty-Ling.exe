@@ -21,8 +21,8 @@ img.src = "Images/Incomplete Logo.png";
 
 // circle properties
 var circleColor = "#00b0ffff";
-var circleThickness = 40;
-var circleRadius = 245;
+var circleThickness = canvas.width/20;
+var circleRadius = canvas.width/3.265;
 var circleInitAngle = 5.18;
 var circleEndAngle = -0.765;
 var circleLen = 0;
@@ -69,7 +69,7 @@ function render() {
 	if (renderDot) {
 		ctx.fillStyle = circleColor;
 		ctx.beginPath();
-		ctx.arc(canvas.width/2 + 146, canvas.height/2 - 197, 23, 0, Math.PI * 2, true);
+		ctx.arc(canvas.width/2 + canvas.width/5.479, canvas.height/2 - canvas.width/4.061, canvas.width/34.783, 0, Math.PI * 2, true);
 		ctx.fill();
 	}
 }
