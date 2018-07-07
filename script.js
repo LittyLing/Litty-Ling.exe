@@ -62,11 +62,8 @@ function tick() {
 // render function
 function render() {
 	// test background
-	ctx.fillStyle = "red";
+	ctx.fillStyle = "#fff";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-	// image background
-	ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
 	// logo completion
 	ctx.strokeStyle = circleColor;
@@ -80,17 +77,22 @@ function render() {
 	if (renderDot) {
 		ctx.globalAlpha = dotAlpha;
 
+		// image background
+		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
 		if (dotAlpha < 1) {
 			dotAlpha += dotStep;
 		} else {
 			dotAlpha = 1;
 		}
 
+		// dot
 		ctx.fillStyle = circleColor;
 		ctx.beginPath();
 		ctx.arc(canvas.width/2 + canvas.width/5.479, canvas.height/2 - canvas.width/4.061, canvas.width/34.783, 0, Math.PI * 2, true);
 		ctx.fill();
 
+		// text
 		ctx.font = canvas.height/10 + "px arial";
 		ctx.textAlign = "center";
 		ctx.fillText("Litty Ling Productions", canvas.width/2, canvas.height - canvas.height/15);
