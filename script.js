@@ -65,13 +65,6 @@ function render() {
 	ctx.fillStyle = "#fff";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	// logo completion
-	ctx.strokeStyle = circleColor;
-	ctx.lineWidth = circleThickness;
-	ctx.beginPath();
-	ctx.arc(canvas.width/2, canvas.height/2, circleRadius, circleInitAngle, circleInitAngle + circleLen, true);
-	ctx.stroke();
-
 	ctx.save();
 
 	if (renderDot) {
@@ -99,6 +92,13 @@ function render() {
 	}
 
 	ctx.restore();
+
+	// logo completion
+	ctx.strokeStyle = circleColor;
+	ctx.lineWidth = circleThickness;
+	ctx.beginPath();
+	ctx.arc(canvas.width/2, canvas.height/2, circleRadius, circleInitAngle, circleInitAngle + circleLen, true);
+	ctx.stroke();
 }
 
 window.onload = function() {
