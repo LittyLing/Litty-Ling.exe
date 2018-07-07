@@ -91,7 +91,7 @@ function render() {
 		ctx.arc(canvas.width/2 + canvas.width/5.479, canvas.height/2 - canvas.width/4.061, canvas.width/34.783, 0, Math.PI * 2, true);
 		ctx.fill();
 
-		ctx.font = canvas.height/10 + "px calibri";
+		ctx.font = canvas.height/10 + "px arial";
 		ctx.textAlign = "center";
 		ctx.fillText("Litty Ling Productions", canvas.width/2, canvas.height - canvas.height/15);
 	}
